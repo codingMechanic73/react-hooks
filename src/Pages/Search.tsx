@@ -1,12 +1,14 @@
+import { useState } from "react";
 import { useSearch } from "../hooks/useSearch";
 
 export const Search = () => {
-    const [query, result, searchHandler] = useSearch('Fabso', 1000);
+    const [query, setQuery] = useState('Fabso');
+    const result = useSearch(query, 500);
     
     return (
         <div>
             <input value={query} onChange={(event)=> {
-                    searchHandler(event.target.value);
+                    setQuery(event.target.value);
                 }} />
             <div>
                 {

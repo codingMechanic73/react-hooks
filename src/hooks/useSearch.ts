@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 
-export const useSearch = (defaultQuery: string, rateLimit: number):[string, any[], (name: string) => void] => {
-    const [query, setQuery] = useState(defaultQuery);
+export const useSearch = (query: string, rateLimit: number):any[] => {
     const [result, setResult] = useState<any[]>([]);
 
     useEffect(() => {
@@ -15,11 +14,7 @@ export const useSearch = (defaultQuery: string, rateLimit: number):[string, any[
             clearTimeout(timeout);
         }
 
-    }, [query])
+    }, [query]);
 
-    const searchHandler = (keyword: string) => {
-        setQuery(keyword);
-    }
-
-    return [query, result, searchHandler];
+    return result;
 }

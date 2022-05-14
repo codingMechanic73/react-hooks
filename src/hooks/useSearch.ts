@@ -14,7 +14,7 @@ export const useSearch = (query: string, rateLimit: number):any[] => {
             clearTimeout(timeout);
         }
 
-    }, [query]);
+    }, [query, rateLimit]);
 
     return result;
 }
